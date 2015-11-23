@@ -18,12 +18,35 @@ def modinv(a, m):
 
 
 def nicerText(line):
+    line = line.replace(" ", "")
+    line = line.replace(".", "")
+    line = line.replace(",", "")
+    line = line.replace("-", "")
+    line = line.replace("!", "")
+    line = line.replace("\\", "")
+    line = line.replace("/", "")
     line = line.upper()
     output = []
     while line:
         output.append(line[:5])
         line = line[5:]
     return output
+
+def add(p, b):
+    l = list(p)
+    string = ""
+    for x in l:
+        if x in letters:
+            string += letters[((letters.index(x) + b)%26)].upper()
+    return string
+
+def mul(p, a):
+    l = list(p)
+    string = ""
+    for x in l:
+        if x in letters:
+            string += letters[((letters.index(x)*a)%26)].upper()
+    return string
 
 def affineEncryption(p, a, b):
     l = list(p)
@@ -45,13 +68,15 @@ keepGoing = True
 while keepGoing:
     print "1. Make my text nicerrrrr"
     print "2. Get a mod inverse"
-    print "3. Do affine provided a and b"
-    print "4. Letter frequency counter"
-    print "5. Exit program"
+    print "3. Do additive cipher"
+    print "4. Do multiplicative cipher"
+    print "5. Do affine provided a and b"
+    print "6. Letter frequency counter"
+    print "7. Exit program"
     
     choice = int(raw_input())
 
-    while choice not in range(1,6):
+    while choice not in range(1,8):
         print "\n"
         print "No gamessss, seriousness please!!"
         print "\n\n"
@@ -71,13 +96,28 @@ while keepGoing:
         print "Your mod inverse is:", final
         print "\n\n"
     elif choice == 3:
-        final = nicerText(affineEncryption(raw_input("Enter your secret text: ").lower(), int(raw_input("Enter a: ")), int(raw_input("Enter b: "))))
+        final = nicerText(add(raw_input("Enter your secret text: ").lower(), int(raw_input("Enter b: "))))
         for x in final:
             print x,
         print "\n\n"
     elif choice == 4:
-        letterFreq(raw_input("Enter the text to count: ").upper())
+        final = nicerText(mul(raw_input("Enter your secret text: ").lower(), int(raw_input("Enter a: "))))
+        for x in final:
+            print x,
         print "\n\n"
     elif choice == 5:
+        final = nicerText(affineEncryption(raw_input("Enter your secret text: ").lower(), int(raw_input("Enter a: ")), int(raw_input("Enter b: "))))
+        for x in final:
+            print x,
+        print "\n\n"
+    elif choice == 6:
+        letterFreq(raw_input("Enter the text to count: ").upper())
+        print "\n\n"
+    elif choice == 7:
         print "Bye bye!"
         keepGoing = False
+
+
+
+
+    
