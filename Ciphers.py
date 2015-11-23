@@ -64,16 +64,16 @@ while keepGoing:
     if choice == 1:
         o = nicerText(raw_input("Enter the text: "))
         for x in o:
-            print x, " ",
+            print x,
         print "\n\n"
     elif choice == 2:
         final = modinv(int(raw_input("What is the number? ")), 26)
         print "Your mod inverse is:", final
         print "\n\n"
     elif choice == 3:
-        final = nicerText(affineEncryption(raw_input("Enter your secret text: "), int(raw_input("Enter a: ")), int(raw_input("Enter b: "))))
+        final = nicerText(affineEncryption(raw_input("Enter your secret text: ").lower(), int(raw_input("Enter a: ")), int(raw_input("Enter b: "))))
         for x in final:
-            print x, " ",
+            print x,
         print "\n\n"
     elif choice == 4:
         letterFreq(raw_input("Enter the text to count: ").upper())
