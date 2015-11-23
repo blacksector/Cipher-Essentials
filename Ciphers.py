@@ -11,10 +11,11 @@ def egcd(a, b):
         return (g, x - (b // a) * y, y)
 
 def modinv(a, m):
-	g, x, y = egcd(a, m)
-	if g != 1:
-		raise ValueError
-	return x % m
+    g, x, y = egcd(a, m)
+    if g != 1:
+        return "Doesn't exist"
+    else:
+        return x % m
 
 
 def nicerText(line):
@@ -66,7 +67,7 @@ def letterFreq(p):
 keepGoing = True
 
 while keepGoing:
-    print "1. Make my text nicerrrrr"
+    print "1. Make my text nicer"
     print "2. Get a mod inverse"
     print "3. Do additive cipher"
     print "4. Do multiplicative cipher"
@@ -114,10 +115,5 @@ while keepGoing:
         letterFreq(raw_input("Enter the text to count: ").upper())
         print "\n\n"
     elif choice == 7:
-        print "Bye bye!"
+        print "Bye bye princess!"
         keepGoing = False
-
-
-
-
-    
