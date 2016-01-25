@@ -70,8 +70,11 @@ def affineDecryption(p, a, b):
     return string
 
 def letterFreq(p):
+    a = p.replace(" ", "")
+    a = a.translate(string.maketrans("",""), string.punctuation)
+    l = len(a)
     for x in range(65,91):
-        print chr(x),": ", p.count(chr(x))
+        print chr(x),": ", p.count(chr(x)),": ", str((p.count(chr(x))/(l*1.0))*100.0)+"%"
 
 
 
